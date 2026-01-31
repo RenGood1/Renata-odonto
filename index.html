@@ -1,1 +1,373 @@
-<h1>Hello world...</h1>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renata Strobel | Odontologia de Alta Performance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-blue: #17344a;
+            --brand-gold: #a69259;
+            --brand-gold-light: #c5b382;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3, .nav-link {
+            font-family: 'Playfair Display', serif;
+        }
+        .bg-brand-blue { background-color: var(--brand-blue); }
+        .text-brand-blue { color: var(--brand-blue); }
+        .bg-brand-gold { background-color: var(--brand-gold); }
+        .text-brand-gold { color: var(--brand-gold); }
+        .border-brand-gold { border-color: var(--brand-gold); }
+        
+        .hero-gradient {
+            background: linear-gradient(rgba(23, 52, 74, 0.85), rgba(23, 52, 74, 0.7)), 
+                        url('images/dra-renata-strobel-header.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .nav-transition {
+            transition: all 0.3s ease;
+        }
+
+        .gold-button {
+            background-color: var(--brand-gold);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        .gold-button:hover {
+            background-color: var(--brand-gold-light);
+            transform: translateY(-2px);
+        }
+
+        .logo {
+            aspect-ratio: 16 / 9;
+            width: 7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border:none;
+            color: var(--brand-gold);
+            font-size: 0.75rem;
+            text-align: center;
+        }
+
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        .service-card img {
+            transition: transform 0.6s ease;
+        }
+        .service-card:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Navigation -->
+    <nav id="main-nav" class="fixed w-full z-50 nav-transition py-4 px-6 md:px-12 flex justify-between items-center bg-transparent">
+        <div class="flex items-center">
+            <!-- Logo Container (16:9 Ratio) -->
+            <div class="logo bg-white/75 rounded">
+                <img src="images/dra-renata-strobel-logo-nobg.png">
+            </div>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex space-x-8 items-center">
+            <a href="#home" class="nav-link text-white hover:text-brand-gold transition-colors text-lg">Início</a>
+            <a href="#services" class="nav-link text-white hover:text-brand-gold transition-colors text-lg">Serviços</a>
+            <a href="#about" class="nav-link text-white hover:text-brand-gold transition-colors text-lg">Sobre</a>
+            <a href="#contact" class="nav-link text-white hover:text-brand-gold transition-colors text-lg">Contato</a>
+            <a href="#contact" class="gold-button text-white px-6 py-2 rounded-full font-semibold">Agendar</a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden text-white" onclick="toggleMenu()">
+            <i data-lucide="menu" id="menu-icon"></i>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-brand-blue z-40 hidden flex-col items-center justify-center space-y-8">
+        <a href="#home" onclick="toggleMenu()" class="nav-link text-white text-3xl">Início</a>
+        <a href="#services" onclick="toggleMenu()" class="nav-link text-white text-3xl">Serviços</a>
+        <a href="#about" onclick="toggleMenu()" class="nav-link text-white text-3xl">Sobre</a>
+        <a href="#contact" onclick="toggleMenu()" class="nav-link text-white text-3xl">Contato</a>
+        <button onclick="toggleMenu()" class="text-brand-gold mt-10">
+            <i data-lucide="x" class="w-10 h-10"></i>
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient h-screen flex items-center justify-center text-center text-white px-6">
+        <div class="max-w-4xl">
+            <h1 class="text-5xl md:text-5xl font-bold mb-6 leading-tight">Sorrisos que transformam vidas.</h1>
+            <p class="text-xl md:text-2xl mb-10 font-light opacity-90">"A busca pela excelência é mais que um hábito. É nossa filosofia"</p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#services" class="gold-button px-10 py-4 rounded-full text-lg font-semibold shadow-lg">Nossos Serviços</a>
+                <a href="https://wa.me/5541992434895" target="_blank" class="border-2 border-white hover:text-black hover:bg-white px-10 py-4 rounded-full text-lg font-semibold transition-all">WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Services Section -->
+    <section id="services" class="py-24 px-6 md:px-20 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-brand-gold font-semibold tracking-widest uppercase mb-2 block">O que fazemos por você</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-brand-blue">Nossas Especialidades</h2>
+                <div class="h-1 w-24 bg-brand-gold mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Implantologia -->
+                <div class="service-card group bg-slate-50 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-100">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=800" alt="Implantes Dentários" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-brand-blue mb-3">Implantodontia</h3>
+                        <p class="text-slate-600 leading-relaxed">Reponha dentes perdidos e volte a sorrir e comer com segurança. Usamos técnicas modernas para um resultado bem natural.</p>
+                    </div>
+                </div>
+
+                <!-- Cirurgias -->
+                <div class="service-card group bg-slate-50 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-100">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800" alt="Cirurgias e Siso" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-brand-blue mb-3">Cirurgias</h3>
+                        <p class="text-slate-600 leading-relaxed">Desde a retirada do siso até pequenos procedimentos, tudo é feito com muito cuidado e anestesia humanizada para você não sentir dor.</p>
+                    </div>
+                </div>
+
+                <!-- Ortodontia -->
+                <div class="service-card group bg-slate-50 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-100">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=800" alt="Aparelhos Dentários" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-brand-blue mb-3">Ortodontia</h3>
+                        <p class="text-slate-600 leading-relaxed">Deixe seus dentes alinhados e bonitos. Trabalhamos com aparelhos fixos e também com os modernos alinhadores invisíveis.</p>
+                    </div>
+                </div>
+
+                <!-- Endodontia -->
+                <div class="service-card group bg-slate-50 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-100">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1445527815219-ecbfec67492e?auto=format&fit=crop&q=80&w=800" alt="Tratamento de Canal" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-brand-blue mb-3">Endodontia</h3>
+                        <p class="text-slate-600 leading-relaxed">Tratamento focado em tirar a dor e salvar o seu dente de forma rápida, usando equipamentos que trazem muito mais conforto.</p>
+                    </div>
+                </div>
+
+                <!-- Odontopediatria -->
+                <div class="service-card group bg-slate-50 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-100">
+                    <div class="h-64 overflow-hidden">
+                        <img src="images/baby-tooth.jpeg" alt="Odontologia para Crianças" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-brand-blue mb-3">Odontopediatria</h3>
+                        <p class="text-slate-600 leading-relaxed">Um atendimento cheio de carinho e paciência para os pequenos crescerem sem medo de dentista e com um sorriso saudável.</p>
+                    </div>
+                </div>
+
+                <!-- Clínica Geral -->
+                <div class="service-card group bg-slate-50 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-100">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=800" alt="Limpeza e Consultas" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-brand-blue mb-3">Clínica Geral</h3>
+                        <p class="text-slate-600 leading-relaxed">Limpezas, obturações e revisões completas. Tudo o que você precisa para manter sua boca saudável no dia a dia.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 md:px-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
+            <div class="w-full md:w-1/2 relative">
+                <div class="absolute -top-4 -left-4 w-full h-full border-2 border-brand-gold rounded-2xl"></div>
+                <img src="images/drrenata-profile.jpg" alt="Dra. Renata Strobel" class="rounded-2xl shadow-2xl relative z-10 w-full object-cover h-[500px]">
+            </div>
+            <div class="w-full md:w-1/2">
+                <span class="text-brand-gold font-semibold tracking-widest uppercase mb-4 block">Conheça a Dra. Renata</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-brand-blue mb-8">Cuidando do seu sorriso com dedicação total.</h2>
+                <p class="text-lg text-slate-600 mb-6 leading-relaxed">
+   Com uma sólida carreira construída em mais de 30 anos, a Dra. Renata Strobel (graduada pela FOL/Ita) é uma das profissionais mais respeitadas da região, acumulando a experiência de mais de 10.000 pacientes atendidos. Ela combina uma visão multidisciplinar com um atendimento personalizado, focado na saúde integral do paciente.
+                </p>
+                <p class="text-lg text-slate-600 mb-10 leading-relaxed">
+
+Sua formação técnica é abrangente, com especializações em Ortodontia, Endodontia e Radiologia, além de constantes atualizações em Prótese, Implantes e Reabilitação Oral. Essa expertise permite que a Dra. Renata ofereça soluções completas, desde tratamentos de rotina até as reabilitações mais complexas, sempre priorizando a ética, a tecnologia e o conforto de quem confia em seu trabalho.                </p>
+                <div class="grid grid-cols-2 gap-6 mb-8">
+                    <div class="flex items-center space-x-3 text-slate-700">
+                        <i data-lucide="check-circle" class="text-brand-gold"></i>
+                        <span class="font-medium text-brand-blue">Materiais de Qualidade</span>
+                    </div>
+                    <div class="flex items-center space-x-3 text-slate-700">
+                        <i data-lucide="check-circle" class="text-brand-gold"></i>
+                        <span class="font-medium text-brand-blue">Tecnologia de Ponta</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 md:px-20 bg-brand-blue text-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Entre em Contato</h2>
+                <div class="h-1 w-24 bg-brand-gold mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                <div class="space-y-10">
+                    <h3 class="text-2xl font-bold mb-6">Onde estamos</h3>
+                    <div class="flex items-start space-x-6">
+                        <div class="bg-brand-gold/20 p-4 rounded-xl">
+                            <i data-lucide="map-pin" class="text-brand-gold"></i>
+                        </div>
+                        <div>
+                            <p class="text-brand-gold font-semibold mb-1">Endereço</p>
+                            <p class="text-slate-300">Travessa Ferreira do Amaral, 80 - Água Verde, Curitiba - PR</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-6">
+                        <div class="bg-brand-gold/20 p-4 rounded-xl">
+                            <i data-lucide="phone" class="text-brand-gold"></i>
+                        </div>
+                        <div>
+                            <p class="text-brand-gold font-semibold mb-1">Telefone & WhatsApp</p>
+                            <p class="text-slate-300">(41) 3077-9090<br>(41) 99243-4895</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-6">
+                        <div class="bg-brand-gold/20 p-4 rounded-xl">
+                            <i data-lucide="clock" class="text-brand-gold"></i>
+                        </div>
+                        <div>
+                            <p class="text-brand-gold font-semibold mb-1">Horário de Atendimento</p>
+                            <p class="text-slate-300">Segunda - Sexta: 08:00 - 19:00<br>Sábado: 08:00 - 12:00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl p-8 md:p-10 shadow-2xl text-slate-800">
+                    <h3 class="text-2xl font-bold mb-6 text-brand-blue">Agende sua consulta</h3>
+                    <!-- Alterado: a função handleWhatsAppSubmit agora processa o formulário -->
+                    <form onsubmit="handleWhatsAppSubmit(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Seu Nome</label>
+                            <input type="text" id="patient-name" required placeholder="Como você se chama?" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-gold">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Telefone</label>
+                            <input type="text" id="patient-phone" required placeholder="(99) 99999-9999" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-gold">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Como podemos ajudar?</label>
+                            <textarea id="patient-message" rows="4" placeholder="Fale um pouco sobre o que você precisa..." class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-gold"></textarea>
+                        </div>
+                        <button type="submit" class="w-full gold-button text-white py-4 rounded-xl font-bold text-lg shadow-lg">Enviar Mensagem via WhatsApp</button>
+                    </form>
+                    <div id="success-msg" class="hidden mt-4 p-4 bg-green-50 text-green-700 rounded-xl text-center font-medium">
+                        Abrindo WhatsApp... Aguarde um momento.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0e2130] py-12 px-6 border-t border-white/5">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-8">
+            <div>
+                <div class="logo bg-white/75 inline-flex mb-4">
+                <img src="images/dra-renata-strobel-logo-nobg.png">
+                </div>
+                <p class="text-slate-400 text-sm">© 2026 Renata Strobel Odontologia. Todos os direitos reservados.</p>
+            </div>
+            <div class="flex space-x-6">
+                <a href="https://www.instagram.com/dra.renatastrobel/" class="text-slate-400 hover:text-brand-gold transition-colors"><i data-lucide="instagram"></i></a>
+                <a href="https://www.facebook.com/renata.strobel.2025" class="text-slate-400 hover:text-brand-gold transition-colors"><i data-lucide="facebook"></i></a>
+                <a href="https://wa.me/5541992434895" class="text-slate-400 hover:text-brand-gold transition-colors"><i data-lucide="message-circle"></i></a>
+            </div>
+        </div>
+    </footer>
+
+   <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-brand-blue', 'shadow-xl', 'py-2');
+                nav.classList.remove('bg-transparent', 'py-4');
+            } else {
+                nav.classList.remove('bg-brand-blue', 'shadow-xl', 'py-2');
+                nav.classList.add('bg-transparent', 'py-4');
+            }
+        });
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('flex');
+        }
+
+        // Nova função para enviar dados para o WhatsApp
+        function handleWhatsAppSubmit(event) {
+            event.preventDefault();
+            
+            // Dados do formulário
+            const name = document.getElementById('patient-name').value;
+            const phone = document.getElementById('patient-phone').value;
+            const message = document.getElementById('patient-message').value;
+            
+            // SEU NÚMERO DE WHATSAPP (Apenas números, inclua o código do país e DDD)
+            // Exemplo: 55 para Brasil + DDD + Número
+            const clinicNumber = "5541992434895"; 
+            
+            // Montagem da mensagem amigável
+            const text = `Olá Dra. Renata! Me chamo *${name}* e gostaria de agendar uma consulta.\n\n*Contato:* ${phone}\n*Mensagem:* ${message}`;
+            
+            // Encode para URL
+            const encodedText = encodeURIComponent(text);
+            const whatsappUrl = `https://wa.me/${clinicNumber}?text=${encodedText}`;
+            
+            // Mostra aviso de sucesso e abre em nova aba
+            showSuccess();
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank');
+            }, 500);
+        }
+
+        function showSuccess() {
+            const msg = document.getElementById('success-msg');
+            msg.classList.remove('hidden');
+            setTimeout(() => msg.classList.add('hidden'), 5000);
+        }
+    </script>
+</body>
+</html>
