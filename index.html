@@ -306,21 +306,26 @@ Sua formação técnica é abrangente, com especializações em Ortodontia, Endo
                 <div class="bg-white rounded-3xl p-8 md:p-10 shadow-2xl text-slate-800">
                     <h3 class="text-2xl font-bold mb-6 text-brand-blue">Agende sua consulta</h3>
                     <!-- Formulário -->
-                    <form onsubmit="handleWhatsAppSubmit(event)" class="space-y-4">
-                        <div>
-                            <label class="block text-sm font-semibold mb-2">Seu Nome</label>
-                            <input type="text" id="patient-name" required placeholder="Como você se chama?" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-gold">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold mb-2">Telefone</label>
-                            <input type="text" id="patient-phone" required placeholder="(99) 99999-9999" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-gold">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold mb-2">Como podemos ajudar?</label>
-                            <textarea id="patient-message" rows="4" placeholder="Fale um pouco sobre o que você precisa..." class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-gold"></textarea>
-                        </div>
-                        <button type="submit" class="w-full gold-button text-white py-4 rounded-xl font-bold text-lg shadow-lg">Enviar Mensagem via WhatsApp</button>
-                    </form>
+               <form onsubmit="handleWhatsAppSubmit(event)" class="space-y-4">
+            <div>
+                <label class="block text-sm font-semibold mb-2">Seu Nome</label>
+                <input type="text" id="patient-name" required placeholder="Como você se chama?" 
+                       class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500">
+            </div>
+            <div>
+                <label class="block text-sm font-semibold mb-2">Telefone</label>
+                <input type="text" id="patient-phone" required placeholder="(99) 99999-9999" 
+                       class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500">
+            </div>
+            <div>
+                <label class="block text-sm font-semibold mb-2">Como podemos ajudar?</label>
+                <textarea id="patient-message" rows="4" placeholder="Fale um pouco sobre o que você precisa..." 
+                          class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500"></textarea>
+            </div>
+            <button type="submit" class="w-full gold-button text-white py-4 rounded-xl font-bold text-lg shadow-lg transition-colors">
+                Enviar Mensagem via WhatsApp
+            </button>
+        </form>
                     <div id="success-msg" class="hidden mt-4 p-4 bg-green-50 text-green-700 rounded-xl text-center font-medium">
                         Abrindo WhatsApp... Aguarde um momento.
                     </div>
@@ -372,28 +377,34 @@ Sua formação técnica é abrangente, com especializações em Ortodontia, Endo
         // Nova função para enviar dados para o WhatsApp
         function handleWhatsAppSubmit(event) {
             event.preventDefault();
-            
-            // Dados do formulário
+
+            // 1. Captura dos dados
             const name = document.getElementById('patient-name').value;
             const phone = document.getElementById('patient-phone').value;
             const message = document.getElementById('patient-message').value;
-            
-            // SEU NÚMERO DE WHATSAPP (Apenas números, inclua o código do país e DDD)
-            // Exemplo: 55 para Brasil + DDD + Número
-            const clinicNumber = "554192434895"; 
-            
-            // Montagem da mensagem amigável
-            const text = `Olá Dra. Renata! Me chamo *${name}* e gostaria de agendar uma consulta.\n\n*Contato:* ${phone}\n*Mensagem:* ${message}`;
-            
-            // Encode para URL
+
+            // 2. Disparo do Evento para Google Analytics
+            if (typeof gtag === 'function') {
+                gtag('event', 'generate_lead', {
+                    'currency': 'BRL',
+                    'value': 1.0, 
+                    'form_id': 'whatsapp_contact_form',
+                    'form_name': 'Contato Via WhatsApp',
+                    'user_name': name 
+                });
+                console.log('Evento enviado para o Google Analytics');
+            }
+
+            // 3. Formatação da mensagem para o WhatsApp
+            const phoneOwner = "554192434895"; 
+            const text = `Olá! Meu nome é ${name}. \nTelefone: ${phone}. \nAssunto: ${message}`;
             const encodedText = encodeURIComponent(text);
-            const whatsappUrl = `https://wa.me/${clinicNumber}?text=${encodedText}`;
-            
-            // Mostra aviso de sucesso e abre em nova aba
-            showSuccess();
+            const whatsappUrl = `https://wa.me/${phoneOwner}?text=${encodedText}`;
+
+            // 4. Redirecionamento (com um pequeno delay para garantir que o GA processe o evento)
             setTimeout(() => {
-                window.open(whatsappUrl, '_blank');
-            }, 500);
+                window.location.href = whatsappUrl;
+            }, 300);
         }
 
         function showSuccess() {
